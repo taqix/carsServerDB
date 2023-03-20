@@ -1,0 +1,65 @@
+<div>
+    {{> header}}
+    <div class="container">
+        <h1>car list page</h1>
+        <div class="row">
+            <div class="col-2 bold">_id</div>
+            <div class="col-2 bold">ubezpieczony</div>
+            <div class="col-2 bold">benzyna</div>
+            <div class="col-2 bold">uszkodzony</div>
+            <div class="col-2 bold">naped4x4</div>
+            <div class="col-1"></div>
+
+        </div>
+        <hr>
+        {{!-- <h1>{{actId}}</h1> --}}
+        <form action="/editCar" method="get">
+            {{#each context.dataDB}}
+
+            <div class="row">
+
+                {{#if (isActId ../actId this._id)}}
+                <div class="col-2">{{this._id}}</div>
+                <div class="col-2"><select name="insured" id="insured">
+                        <option value="true">Tak</option>
+                        <option value="false">Nie</option>
+                        <option value="undefined">Brak</option>
+                    </select></div>
+                <div class="col-2"><select name="patrol" id="patrol">
+                        <option value="true">Tak</option>
+                        <option value="false">Nie</option>
+                        <option value="undefined">Brak</option>
+                    </select></div>
+                <div class="col-2"><select name="damaged" id="damaged">
+                        <option value="true">Tak</option>
+                        <option value="false">Nie</option>
+                        <option value="undefined">Brak</option>
+                    </select></div>
+                <div class="col-2"><select name="naped" id="naped">
+                        <option value="true">Tak</option>
+                        <option value="false">Nie</option>
+                        <option value="undefined">Brak</option>
+                    </select></div>
+                    <div class="col-2"> <button type="submit" value={{this._id}} id="confirm" formaction="/updateData" class="btn btn-danger"
+                        name='_id'>Potwierdz</button><button class="btn btn-dark" type="submit" formaction="/cancelUpdate">Cancel</button></div>
+                {{else}}
+                <div class="col-2">{{this._id}}</div>
+                <div class="col-2">{{isTrue this.insured}}</div>
+                <div class="col-2">{{isTrue this.patrol}}</div>
+                <div class="col-2">{{isTrue this.damaged}}</div>
+                <div class="col-2">{{isTrue this.naped}}</div>
+                <input type="hidden" value={{this._id}}>
+                <div class="col-1"> <button type="submit" value={{this._id}} class="btn btn-dark"
+                        name='_id'>Edit</button></div>
+                {{/if}}
+
+            </div>
+            <hr>
+            {{/each}}
+        </form>
+    </div>
+</div>
+<script>
+    const button = document.getElementById('confirm')
+    button.onclick = ()=>{return confirm('Are you sure you want to update this?')}
+</script>

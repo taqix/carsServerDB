@@ -1,0 +1,26 @@
+.cont{
+    background-color: black;
+    color:white;  
+    padding: 10px;  
+}
+.log{
+    color:brown;
+    font-size: 1.6em !important ;
+}
+.menu{
+    font-size: 1.3em;
+}
+a{
+
+    text-decoration: none !important;
+    color:white !important;
+
+}
+input[type="checkbox"]{
+    /* font-size: 30px; */
+    height:30px;
+    width:30px;
+}
+.bold{
+    font-weight: bold;
+}

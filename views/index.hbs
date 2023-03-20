@@ -1,10 +1,10 @@
-<form action="/post" method="post" >
+{{!-- <form action="/post" method="post" >
     <input type="text" name="text" placeholder="Text">
     <input type="submit" value="Wyslij">
-</form>
+</form> --}}
 
 <div>
-    {{#each array}}
-        <p>[{{time}}]: {{text}}</p>
-    {{/each}}
+    {{> header}}
+    
+
 </div>
